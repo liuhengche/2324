@@ -38,82 +38,30 @@ Formula used: d(p, q) = absolute value of (q1 - p1) + absolute value of (q2 - p2
 **(c)**
 ```
 Detailed steps of hierarchical clustering (single - linkage) using Euclidean distance:
-Step 1:
-  Merged clusters: (7, 9)
-  Distance between them: 0.45
-  New cluster formed: [7, 9]
-Step 2:
-  Merged clusters: (3, 5)
-  Distance between them: 0.86
-  New cluster formed: [3, 5]
-Step 3:
-  Merged clusters: (4, 6)
-  Distance between them: 1.62
-  New cluster formed: [6, 7, 9]
-Step 4:
-  Merged clusters: (0, 1)
-  Distance between them: 1.70
-  New cluster formed: [0, 1]
-Step 5:
-  Merged clusters: (1, 5)
-  Distance between them: 2.47
-  New cluster formed: [4, 0, 1]
-Step 6:
-  Merged clusters: (2, 4)
-  Distance between them: 2.52
-  New cluster formed: [3, 5, 4, 0, 1]
-Step 7:
-  Merged clusters: (0, 3)
-  Distance between them: 3.11
-  New cluster formed: [2, 3, 5, 4, 0, 1]
-Step 8:
-  Merged clusters: (0, 1)
-  Distance between them: 3.14
-  New cluster formed: [8, 6, 7, 9]
-Step 9:
-  Merged clusters: (0, 1)
-  Distance between them: 3.53
-  New cluster formed: [2, 3, 5, 4, 0, 1, 8, 6, 7, 9]
+Step 1: merged clusters: {H} and {J}, distance: 0.45
+Step 2: merged clusters: {D} and {F}, distance: 0.86
+Step 3: merged clusters: {G} and {H, J}, distance: 1.62
+Step 4: merged clusters: {A} and {B}, distance: 1.70
+Step 5: merged clusters: {E} and {A, B}, distance: 2.47
+Step 6: merged clusters: {D, F} and {A, B, E}, distance: 2.52
+Step 7: merged clusters: {C} and {A, B, D, E, F}, distance: 3.11
+Step 8: merged clusters: {I} and {G, H, J}, distance: 3.14
+Step 9: merged clusters: {A, B, C, D, E, F} and {G, H, I, J}, distance: 3.53
 
 Detailed steps of hierarchical clustering (single - linkage) using Manhattan distance:
-Step 1:
-  Merged clusters: (7, 9)
-  Distance between them: 0.60
-  New cluster formed: [7, 9]
-Step 2:
-  Merged clusters: (3, 5)
-  Distance between them: 1.20
-  New cluster formed: [3, 5]
-Step 3:
-  Merged clusters: (4, 6)
-  Distance between them: 2.10
-  New cluster formed: [6, 7, 9]
-Step 4:
-  Merged clusters: (0, 1)
-  Distance between them: 2.30
-  New cluster formed: [0, 1]
-Step 5:
-  Merged clusters: (1, 3)
-  Distance between them: 2.80
-  New cluster formed: [4, 3, 5]
-Step 6:
-  Merged clusters: (3, 4)
-  Distance between them: 3.40
-  New cluster formed: [0, 1, 4, 3, 5]
-Step 7:
-  Merged clusters: (1, 2)
-  Distance between them: 3.60
-  New cluster formed: [8, 6, 7, 9]
-Step 8:
-  Merged clusters: (0, 1)
-  Distance between them: 4.30
-  New cluster formed: [2, 0, 1, 4, 3, 5]
-Step 9:
-  Merged clusters: (0, 1)
-  Distance between them: 4.70
-  New cluster formed: [8, 6, 7, 9, 2, 0, 1, 4, 3, 5]
+Merge steps:
+Step 1: merged clusters: {H} and {J}, distance: 0.60
+Step 2: merged clusters: {D} and {F}, distance: 1.20
+Step 3: merged clusters: {G} and {H, J}, distance: 2.10
+Step 4: merged clusters: {A} and {B}, distance: 2.30
+Step 5: merged clusters: {E} and {D, F}, distance: 2.80
+Step 6: merged clusters: {A, B} and {D, E, F}, distance: 3.40
+Step 7: merged clusters: {I} and {G, H, J}, distance: 3.60
+Step 8: merged clusters: {C} and {A, B, D, E, F}, distance: 4.30
+Step 9: merged clusters: {G, H, I, J} and {A, B, C, D, E, F}, distance: 4.70
 ```
-![hierarchy trees](1c.png)
+![Euclidean hierarchy trees](Euclidean.png)
+![Manhattan hierarchy trees](Manhattan.png)
 
 #### Q2:
 **(a)**
@@ -238,99 +186,29 @@ Examining itemset: {'B', 'E'}
 - Results
 ```
 Final Interests of the Rules:
-Rule: frozenset({'A'}) -> frozenset({'E'}), Interest: 0.17
-Rule: frozenset({'E'}) -> frozenset({'A'}), Interest: 0.17
-Rule: frozenset({'B'}) -> frozenset({'C'}), Interest: 0.17
-Rule: frozenset({'C'}) -> frozenset({'B'}), Interest: 0.17
+Rule: frozenset({'A'}) -> frozenset({'E'}), Interest: 0.25
+Rule: frozenset({'E'}) -> frozenset({'A'}), Interest: 0.33
+Rule: frozenset({'B'}) -> frozenset({'C'}), Interest: 0.25
+Rule: frozenset({'C'}) -> frozenset({'B'}), Interest: 0.33
 ```
 - Steps
 ```
-Single Itemsets and their Support:
-Item: A, Support: 0.67
-Item: B, Support: 0.67
-Item: C, Support: 0.50
-Item: E, Support: 0.50
-Item: D, Support: 0.33
-
-Generating Association Rules:
-
-Examining itemset: {'A'}
-
-Examining itemset: {'B'}
-
-Examining itemset: {'C'}
-
-Examining itemset: {'E'}
-
-Examining itemset: {'D'}
-
-Examining itemset: {'D', 'B'}
-  Antecedent: frozenset({'D'}), Consequent: frozenset({'B'})
-  Support(A ∪ B): 0.17, Support(A): 0.33, Confidence: 0.50
-  Antecedent: frozenset({'B'}), Consequent: frozenset({'D'})
-  Support(A ∪ B): 0.17, Support(A): 0.67, Confidence: 0.25
-
-Examining itemset: {'A', 'E'}
-  Antecedent: frozenset({'A'}), Consequent: frozenset({'E'})
-  Support(A ∪ B): 0.50, Support(A): 0.67, Confidence: 0.75
-  Rule passed: frozenset({'A'}) -> frozenset({'E'}), Support: 0.50, Confidence: 0.75
-  Antecedent: frozenset({'E'}), Consequent: frozenset({'A'})
-  Support(A ∪ B): 0.50, Support(A): 0.50, Confidence: 1.00
-  Rule passed: frozenset({'E'}) -> frozenset({'A'}), Support: 0.50, Confidence: 1.00
-
-Examining itemset: {'B', 'C'}
-  Antecedent: frozenset({'B'}), Consequent: frozenset({'C'})
-  Support(A ∪ B): 0.50, Support(A): 0.67, Confidence: 0.75
-  Rule passed: frozenset({'B'}) -> frozenset({'C'}), Support: 0.50, Confidence: 0.75
-  Antecedent: frozenset({'C'}), Consequent: frozenset({'B'})
-  Support(A ∪ B): 0.50, Support(A): 0.50, Confidence: 1.00
-  Rule passed: frozenset({'C'}) -> frozenset({'B'}), Support: 0.50, Confidence: 1.00
-
-Examining itemset: {'B', 'A'}
-  Antecedent: frozenset({'B'}), Consequent: frozenset({'A'})
-  Support(A ∪ B): 0.33, Support(A): 0.67, Confidence: 0.50
-  Antecedent: frozenset({'A'}), Consequent: frozenset({'B'})
-  Support(A ∪ B): 0.33, Support(A): 0.67, Confidence: 0.50
-
-Examining itemset: {'D', 'E'}
-  Antecedent: frozenset({'D'}), Consequent: frozenset({'E'})
-  Support(A ∪ B): 0.17, Support(A): 0.33, Confidence: 0.50
-  Antecedent: frozenset({'E'}), Consequent: frozenset({'D'})
-  Support(A ∪ B): 0.17, Support(A): 0.50, Confidence: 0.33
-
-Examining itemset: {'D', 'A'}
-  Antecedent: frozenset({'D'}), Consequent: frozenset({'A'})
-  Support(A ∪ B): 0.17, Support(A): 0.33, Confidence: 0.50
-  Antecedent: frozenset({'A'}), Consequent: frozenset({'D'})
-  Support(A ∪ B): 0.17, Support(A): 0.67, Confidence: 0.25
-
-Examining itemset: {'A', 'C'}
-  Antecedent: frozenset({'A'}), Consequent: frozenset({'C'})
-  Support(A ∪ B): 0.17, Support(A): 0.67, Confidence: 0.25
-  Antecedent: frozenset({'C'}), Consequent: frozenset({'A'})
-  Support(A ∪ B): 0.17, Support(A): 0.50, Confidence: 0.33
-
-Examining itemset: {'D', 'C'}
-  Antecedent: frozenset({'D'}), Consequent: frozenset({'C'})
-  Support(A ∪ B): 0.17, Support(A): 0.33, Confidence: 0.50
-  Antecedent: frozenset({'C'}), Consequent: frozenset({'D'})
-  Support(A ∪ B): 0.17, Support(A): 0.50, Confidence: 0.33
-
-Examining itemset: {'B', 'E'}
-  Antecedent: frozenset({'B'}), Consequent: frozenset({'E'})
-  Support(A ∪ B): 0.17, Support(A): 0.67, Confidence: 0.25
-  Antecedent: frozenset({'E'}), Consequent: frozenset({'B'})
-  Support(A ∪ B): 0.17, Support(A): 0.50, Confidence: 0.33
-
-Step 3: Calculate Interest for Each Rule
-Rule: frozenset({'A'}) -> frozenset({'E'}), Interest: 0.17
-Rule: frozenset({'E'}) -> frozenset({'A'}), Interest: 0.17
-Rule: frozenset({'B'}) -> frozenset({'C'}), Interest: 0.17
-Rule: frozenset({'C'}) -> frozenset({'B'}), Interest: 0.17
+A -> E: conf = 0.75, E expec = 0.50, so interest = | conf - expec | = 0.25
+E -> A: conf = 1.00, A expec = 0.67, so interest = | conf - expec | = 0.33
+B -> C: conf = 0.75, C expec = 0.50, so interest = | conf - expec | = 0.25
+C -> B: conf = 1.00, B expec = 0.67, so interest = | conf - expec | = 0.33
 ```
 
 #### Q3
 **(a)**
+- Results:
+```
+Document 1: {'mat and looks', 'on the mat', 'the mat and', 'and looks very', 'sits on the', 'the cat sits', 'looks very calm', 'cat sits on'}
+Document 2: {'dog plays nearby', 'on the mat', 'sits calmly on', 'the dog plays', 'calmly on the', 'the cat sits', 'while the dog', 'mat while the', 'cat sits calmly', 'the mat while'}
+Document 3: {'the cat watches', 'the grass the', 'on the grass', 'cat watches quietly', 'plays joyfully as', 'dog plays joyfully', 'grass the dog', 'as the cat', 'joyfully as the', 'the dog plays'}
+```
+
+- Steps:
 ```
 Processing Document 1...
 Normalized Text: 'the cat sits on the mat and looks very calm'
@@ -397,116 +275,26 @@ plays joyfully as: [0, 0, 1]
 ```
 
 **(c)**
+- Results:
 ```
-Input Matrix Jaccard Similarity:
-+----------+----------+----------+----------+----------+----------+----------+
-|   Item 0 |   Item 1 |   Item 2 |   Item 3 |   Item 4 |   Item 5 |   Item 6 |
-+==========+==========+==========+==========+==========+==========+==========+
-|   1.0000 |   0.3333 |   0.2500 |   0.0000 |   0.6667 |   0.5000 |   0.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.3333 |   1.0000 |   0.2500 |   0.0000 |   0.6667 |   0.0000 |   0.3333 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.2500 |   0.2500 |   1.0000 |   0.3333 |   0.5000 |   0.3333 |   0.6667 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.0000 |   0.0000 |   0.3333 |   1.0000 |   0.0000 |   0.0000 |   0.5000 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.6667 |   0.6667 |   0.5000 |   0.0000 |   1.0000 |   0.3333 |   0.2500 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.5000 |   0.0000 |   0.3333 |   0.0000 |   0.3333 |   1.0000 |   0.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.0000 |   0.3333 |   0.6667 |   0.5000 |   0.2500 |   0.0000 |   1.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
-
 Signature Matrix:
-+----------+----------+----------+----------+----------+----------+----------+
-|   Perm 0 |   Perm 1 |   Perm 2 |   Perm 3 |   Perm 4 |   Perm 5 |   Perm 6 |
-+==========+==========+==========+==========+==========+==========+==========+
-|        4 |        1 |        4 |        1 |        2 |        3 |        3 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        2 |        1 |        3 |        6 |        1 |        4 |        3 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        2 |        2 |        1 |        1 |        1 |        3 |        4 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        3 |        7 |        1 |        5 |        2 |        6 |        4 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        2 |        1 |        3 |        1 |        1 |        3 |        3 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        4 |        2 |        6 |        1 |        5 |        3 |        7 |
-+----------+----------+----------+----------+----------+----------+----------+
-|        2 |        5 |        1 |        5 |        1 |        4 |        4 |
-+----------+----------+----------+----------+----------+----------+----------+
+3 1 1 2
+1 1 3 3
+2 3 1 1
+2 1 1 1 
 
-Signature Matrix Jaccard Similarity:
-+----------+----------+----------+----------+----------+----------+----------+
-|   Item 0 |   Item 1 |   Item 2 |   Item 3 |   Item 4 |   Item 5 |   Item 6 |
-+==========+==========+==========+==========+==========+==========+==========+
-|   1.0000 |   0.2857 |   0.2857 |   0.1429 |   0.5714 |   0.4286 |   0.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.2857 |   1.0000 |   0.2857 |   0.0000 |   0.7143 |   0.0000 |   0.4286 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.2857 |   0.2857 |   1.0000 |   0.2857 |   0.5714 |   0.4286 |   0.5714 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.1429 |   0.0000 |   0.2857 |   1.0000 |   0.0000 |   0.0000 |   0.4286 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.5714 |   0.7143 |   0.5714 |   0.0000 |   1.0000 |   0.2857 |   0.2857 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.4286 |   0.0000 |   0.4286 |   0.0000 |   0.2857 |   1.0000 |   0.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
-|   0.0000 |   0.4286 |   0.5714 |   0.4286 |   0.2857 |   0.0000 |   1.0000 |
-+----------+----------+----------+----------+----------+----------+----------+
+Jaccard Similarity
+                    1-2     1-3     1-4     2-3     2-4     3-4
+sim(ci, cj)         0.167   0.4     0.33    0       0.4     0.4
+sim(sigi, sigj)     0.25    0.25    0.5     0       0.25    0.75
 
-Comparison:
-Item 0-0: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 0-1: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 0-2: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 0-3: Input Jaccard=0.0000, Signature Jaccard=0.1429
-Item 0-4: Input Jaccard=0.6667, Signature Jaccard=0.5714
-Item 0-5: Input Jaccard=0.5000, Signature Jaccard=0.4286
-Item 0-6: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 1-0: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 1-1: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 1-2: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 1-3: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 1-4: Input Jaccard=0.6667, Signature Jaccard=0.7143
-Item 1-5: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 1-6: Input Jaccard=0.3333, Signature Jaccard=0.4286
-Item 2-0: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 2-1: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 2-2: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 2-3: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 2-4: Input Jaccard=0.5000, Signature Jaccard=0.5714
-Item 2-5: Input Jaccard=0.3333, Signature Jaccard=0.4286
-Item 2-6: Input Jaccard=0.6667, Signature Jaccard=0.5714
-Item 3-0: Input Jaccard=0.0000, Signature Jaccard=0.1429
-Item 3-1: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 3-2: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 3-3: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 3-4: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 3-5: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 3-6: Input Jaccard=0.5000, Signature Jaccard=0.4286
-Item 4-0: Input Jaccard=0.6667, Signature Jaccard=0.5714
-Item 4-1: Input Jaccard=0.6667, Signature Jaccard=0.7143
-Item 4-2: Input Jaccard=0.5000, Signature Jaccard=0.5714
-Item 4-3: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 4-4: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 4-5: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 4-6: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 5-0: Input Jaccard=0.5000, Signature Jaccard=0.4286
-Item 5-1: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 5-2: Input Jaccard=0.3333, Signature Jaccard=0.4286
-Item 5-3: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 5-4: Input Jaccard=0.3333, Signature Jaccard=0.2857
-Item 5-5: Input Jaccard=1.0000, Signature Jaccard=1.0000
-Item 5-6: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 6-0: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 6-1: Input Jaccard=0.3333, Signature Jaccard=0.4286
-Item 6-2: Input Jaccard=0.6667, Signature Jaccard=0.5714
-Item 6-3: Input Jaccard=0.5000, Signature Jaccard=0.4286
-Item 6-4: Input Jaccard=0.2500, Signature Jaccard=0.2857
-Item 6-5: Input Jaccard=0.0000, Signature Jaccard=0.0000
-Item 6-6: Input Jaccard=1.0000, Signature Jaccard=1.0000
-
-Is MinHashing a good approximation?
-Yes, MinHashing is a good approximation in this case. MinHashing works because the probability that two minhashes are equal is mathematically proven to equal the Jaccard similarity of the original sets.
+The Minhashing is a good approximation in this case. sim(ci, cj) has strong correlation with sim(sigi, sigj), which proves that the approximation is ideal. It captures the minimum hash values of sets, effectively summarizing their contents while preserving the relative uniqueness of elements. 
+```
+- Steps:
+```
+After hash1: 3 1 2 2
+After hash2: 1 1 3 1
+After hash3: 1 3 1 1
+After hash4: 2 3 1 1
 ```
 
