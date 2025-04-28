@@ -1,4 +1,0 @@
-- useful datasets:
-    - [24/25 Player Stat](https://www.kaggle.com/datasets/eduardopalmieri/nba-player-stats-season-2425/data)
-    - [NBA success](https://www.kaggle.com/code/tombutton/predicting-nba-success/notebook)
-    - [NBA dataset](https://www.kaggle.com/datasets/salikhussaini49/nba-dataset?select=2023_new.csv)
